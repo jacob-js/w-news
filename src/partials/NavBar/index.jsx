@@ -9,7 +9,7 @@ function NavBar() {
   return (
     <Wrapper>
       <div className='flex justify-between items-center py-5 sm:py-10'>
-          <div className={showMobileSearch && 'hidden sm:block'}>
+          <div className={showMobileSearch ? 'hidden sm:block': ''}>
               <img src="/logo.png" alt="" className='w-12' />
           </div>
           <div className="hidden sm:block">

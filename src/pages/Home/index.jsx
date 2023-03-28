@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ArticleCard from '../../commons/ArticleCard'
 import Skeletons from '../../commons/Skeletons'
+import Title from '../../commons/Title'
 import Wrapper from '../../partials/Wrapper'
-import { getArticles } from '../../redux/features/articles'
+import getArticles from '../../redux/actions/articles/getArticles'
+import Publishers from './Publishers'
 
 function Home() {
     const dispatch = useDispatch();
@@ -15,8 +17,8 @@ function Home() {
 
   return (
     <Wrapper>
-        <div className='mt-14'>
-            <div className="text-4xl sm:text-5xl font-bold">The world's latest news</div>
+        <div className='mt-14 pb-14'>
+            <Title text="The world's latest news" />
             <div className="grid sm:grid-cols-3 gap-10 mt-16">
                 {
                     loading ?
@@ -25,6 +27,7 @@ function Home() {
                 }
             </div>
         </div>
+        <Publishers />
     </Wrapper>
   )
 }

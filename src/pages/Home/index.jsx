@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ArticleCard from '../../commons/ArticleCard'
-import Skeleton from '../../commons/Skeleton'
+import Skeletons from '../../commons/Skeletons'
 import Wrapper from '../../partials/Wrapper'
 import { getArticles } from '../../redux/features/articles'
 
@@ -20,9 +20,7 @@ function Home() {
             <div className="grid sm:grid-cols-3 gap-10 mt-16">
                 {
                     loading ?
-                    Array.from(Array(9).keys()).map(() =>(
-                        <Skeleton />
-                    )):
+                    <Skeletons count={9} />:
                     data.map((article, index) =><ArticleCard {...article} key={index} />)
                 }
             </div>

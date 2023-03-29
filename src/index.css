@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --swiper-navigation-size: 20px;
+    --swiper-navigation-color: gray;
+    --swiper-navigation-top-offset: 40%;
+    --swiper-navigation-sides-offset: 20px;
+}
+
+.swiper-button-next{
+    @apply w-[10px_!important]
+}
+
+.swiper-slide{
+    @apply h-auto
+}

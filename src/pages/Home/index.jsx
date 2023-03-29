@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <Wrapper>
-        <div className='mt-14 pb-14'>
+        <div className='mt-14'>
             <Title text="The world's latest news" />
             <div className="grid sm:grid-cols-3 gap-10 mt-16">
                 {

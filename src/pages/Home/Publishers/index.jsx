@@ -23,11 +23,11 @@ function Publishers() {
     useEffect(() =>{
         (() =>{
             if(swiper.current){
-                setIsPrevDisabled(swiper.current.swiper.isBeginning)
-                setIsNextDisabled(data.length > 6)
+                setIsPrevDisabled(swiper.current.swiper.isBeginning);
+                setIsNextDisabled(data.length < 6)
             }
         })()
-    }, [swiper.current]);
+    }, [swiper.current, data]);
 
     const handleSlideChange = (isBeginning, isEnd) =>{
         setIsPrevDisabled(isBeginning);

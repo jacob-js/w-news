@@ -10,7 +10,7 @@ function PublisherArticles() {
   return (
     <Wrapper>
         <div className="mt-14 pb-14">
-            <Title text={location.state?.name} />
+            <Title text={location.state?.name} withBackIcon />
         </div>
     </Wrapper>
   )

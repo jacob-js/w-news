@@ -1,9 +1,12 @@
 import moment from 'moment'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function ArticleCard({publishedAt, title, content, urlToImage}) {
+function ArticleCard({publishedAt, title, content, urlToImage, id}) {
+  const navigate = useNavigate();
+
   return (
-    <div className='space-y-5 border p-5 rounded-md hover:shadow-md transition-all duration-500 cursor-pointer'>
+    <div className='space-y-5 border p-5 rounded-md hover:shadow-md transition-all duration-500 cursor-pointer' onClick={() =>navigate(`/article/${id}`)}>
         <img src={urlToImage} alt={title} className="rounded-md" />
         <div className="text-gray-500">{moment(publishedAt).format("ll")}</div>
         <div className="text-2xl font-bold">{title}</div>

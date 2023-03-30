@@ -1,10 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import ArticleDetails from "./pages/ArticleDetails";
 import Home from "./pages/Home";
 import PublisherArticles from "./pages/PublisherArticles";
 import withNavBar from "./partials/NavBar";
 
-export default createBrowserRouter([
+export default createHashRouter([
     {
         path: '/',
         element: withNavBar(Home)

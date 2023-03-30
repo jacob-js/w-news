@@ -1,14 +1,10 @@
-import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-function PublisherItem({id, name, description, url}) {
-    const descriptionRef = useRef();
+function PublisherItem({id, name}) {
+    const navigate = useNavigate();
 
   return (
-    <div className={`py-3 border rounded-md group transition-all h-full flex flex-col items-center justify-center`}>
-        <span className="">{name}</span>
-        <div ref={descriptionRef} className="hidden transition-all overflow-hidden max-w-md group-hoveranimate-maximize">{description}</div>
-
-    </div>
+    <div className="py-3 border rounded-md group transition-all h-full flex flex-col items-center justify-center cursor-pointer" onClick={() =>navigate(`/publisher/${id}`, {state: {name}})}>{name}</div>
   )
 }
 

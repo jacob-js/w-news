@@ -3,10 +3,22 @@ import { useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
 import Wrapper from '../Wrapper'
+import { useDispatch, useSelector } from 'react-redux';
+import { filterArticles, setFilterKeyWord } from '../../redux/features/articles';
 
 function NavBar() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const filterKeyword = useSelector(state => state.articles.filterKeyword);
+
+  console.log(filterKeyword);
+
+  const handleSearchValueChange =  e =>{
+    const {value} = e.target;
+    dispatch(setFilterKeyWord(value));
+    dispatch(filterArticles({query: value}))
+  }
 
   return (
     <Wrapper>
@@ -15,12 +27,12 @@ function NavBar() {
               <img src="/logo.png" alt="" className='w-12' />
           </div>
           <div className="hidden sm:block">
-            <Input startDecorator={<AiOutlineSearch />} variant="soft" size="lg" className="w-80" />
+            <Input startDecorator={<AiOutlineSearch />} value={filterKeyword} onChange={handleSearchValueChange} placeholder='Enter a keyword to filter' variant="soft" size="lg" className="w-80" />
           </div>
           {
             showMobileSearch ?
             <div className="block sm:hidden w-full animate-grow">
-              <Input startDecorator={<AiOutlineSearch />} variant="soft" fullWidth autoFocus onBlur={() =>setShowMobileSearch(false)} />
+              <Input startDecorator={<AiOutlineSearch />} value={filterKeyword} onChange={handleSearchValueChange} placeholder='Enter a keyword to filter' variant="soft" fullWidth autoFocus onBlur={() =>setShowMobileSearch(false)} />
             </div>:
             <div className="block sm:hidden">
               <Button variant="soft" color='neutral' onClick={() =>setShowMobileSearch(true)}><AiOutlineSearch /></Button>

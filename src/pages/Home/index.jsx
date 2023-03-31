@@ -6,10 +6,13 @@ import Title from '../../commons/Title'
 import Wrapper from '../../partials/Wrapper'
 import getArticles from '../../redux/actions/articles/getArticles'
 import Publishers from './Publishers'
+import { setFilterKeyWord } from '../../redux/features/articles'
 
 function Home() {
     const dispatch = useDispatch();
     const {data, loading} = useSelector(state => state.articles.articles);
+    const {data: filtered} = useSelector(state => state.articles.filtered);
+    const filterKeyword = useSelector(state => state.articles.filterKeyword);
 
     useEffect(() =>{
         dispatch(getArticles(12))
@@ -18,12 +21,12 @@ function Home() {
   return (
     <Wrapper>
         <div className='mt-14'>
-            <Title text="The world's latest news" />
+            <Title text={filterKeyword ? `Result for "${filterKeyword}" in articles`: "The world's latest news"} onBack={() =>dispatch(setFilterKeyWord(""))} withBackIcon={filterKeyword} />
             <div className="grid sm:grid-cols-3 gap-10 mt-16">
                 {
                     loading ?
                     <Skeletons count={9} />:
-                    data.map((article, index) =><ArticleCard {...article} key={index} />)
+                    (filterKeyword ? filtered: data).map((article, index) =><ArticleCard {...article} key={index} />)
                 }
             </div>
         </div>

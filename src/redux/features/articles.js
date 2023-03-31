@@ -13,7 +13,11 @@ const articlesSlice = createSlice({
             const articleData = state.articles.data.find(art => art.id == payload)
             if(articleData) return {...state, article: {...state.article, data: articleData}};
             return {...state, article: {...state.article, error: "Article not found!"}}
-        }
+        },
+        filterArticles: (state, {payload}) =>{
+            return {...state, filtered: {...state.filtered, data: state.articles.data.filter(article => article.title.toLowerCase().indexOf(payload.query) !== -1)}}
+        },
+        setFilterKeyWord: (state, {payload}) => ({...state, filterKeyword: payload})
     },
     extraReducers: (builder) =>{
         builder.addCase(getArticles.pending, (state) =>{
@@ -32,5 +36,5 @@ const articlesSlice = createSlice({
     }
 });
 
-export const {getArticle} = articlesSlice.actions;
+export const {getArticle, filterArticles, setFilterKeyWord} = articlesSlice.actions;
 export default articlesSlice.reducer

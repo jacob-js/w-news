@@ -29,6 +29,12 @@ function Home() {
                     (filterKeyword ? filtered: data).map((article, index) =><ArticleCard {...article} key={index} />)
                 }
             </div>
+            {
+                !loading && !(filterKeyword ? filtered.length: data.length)&&
+                <div className='flex justify-center p-10'>
+                    <img src="/empty.svg" alt="No data!" className="w-32" />
+                </div>
+            }
         </div>
         <Publishers />
     </Wrapper>

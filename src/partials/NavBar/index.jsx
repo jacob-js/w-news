@@ -11,9 +11,7 @@ function NavBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const filterKeyword = useSelector(state => state.articles.filterKeyword);
-
-  console.log(filterKeyword);
-
+  
   const handleSearchValueChange =  e =>{
     const {value} = e.target;
     dispatch(setFilterKeyWord(value));

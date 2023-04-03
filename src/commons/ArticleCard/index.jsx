@@ -11,7 +11,7 @@ function ArticleCard({publishedAt, title, content, urlToImage, id}) {
         <img src={urlToImage} alt={title} className="rounded-md" />
         <div className="text-gray-500">{moment(publishedAt).format("ll")}</div>
         <div className="text-2xl font-bold">{title}</div>
-        <div className="text-gray-500">{content.length > 128 ? content.substring(0, 128) + "...": content}</div>
+        <div className="text-gray-500">{content?.length > 128 ? content.substring(0, 128) + "...": content}</div>
     </div>
   )
 }

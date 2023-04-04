@@ -24,11 +24,11 @@ function ArticleDetails() {
   return (
     <Wrapper>
         <div className="mt-14 flex flex-col lg:flex-row gap-10 items-center pb-14">
-            <img src={data.urlToImage} alt={data.title} className='rounded-md lg:w-2/4' />
+            <img src={data.urlToImage} alt={data.title} className="rounded-md lg:w-2/4" />
             <div className="flex flex-col gap-7">
                 <div className="space-y-5">
                     <div className="text-gray-500">
-                        <div className="">{moment(data.publishedAt).format("ll")}</div>
+                        <div>{moment(data.publishedAt).format("ll")}</div>
                         <div className="italic text-sm">Author: {data.author}</div>
                     </div>
                     <div className="text-3xl font-bold">{data.title}</div>

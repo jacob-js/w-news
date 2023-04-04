@@ -6,7 +6,6 @@ import PublisherItem from './PublisherItem.jsx';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from 'swiper';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
-import useWindowWidth from '../../../hooks/useWindowWidth';
 
 function Publishers() {
     const {data, loading} = useSelector(state => state.publishers.publishers);
@@ -14,7 +13,6 @@ function Publishers() {
     const swiper = useRef();
     const [isPrevDisabled, setIsPrevDisabled] = useState(true)
     const [isNextDisabled, setIsNextDisabled] = useState(true);
-    const windowWidth = useWindowWidth();
 
     useEffect(() =>{
         dispatch(getPublishers())
@@ -48,7 +46,11 @@ function Publishers() {
                 </div>
             </div>
             <Swiper
-                slidesPerView={windowWidth <= 400 ? 2: windowWidth <= 900 ? 4: 6}
+                slidesPerView={2}
+                breakpoints={{
+                    600: {slidesPerView: 4},
+                    1024: {slidesPerView: 6},
+                }}
                 grid={{
                   rows: 1,
                 }}

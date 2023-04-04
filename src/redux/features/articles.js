@@ -11,7 +11,7 @@ const articlesSlice = createSlice({
     initialState: initialStates.articles,
     reducers: {
         getArticle: (state, {payload}) =>{
-            const articleData = [...state.articles.data, ...state.articlesByPublisher.data].find(art => art.id == payload)
+            const articleData = [...state.articles.data, ...state.articlesByPublisher.data].find(article => article.id == payload)
             if(articleData) return {...state, article: {...state.article, data: articleData}};
             return {...state, article: {...state.article, error: "Article not found!"}}
         },

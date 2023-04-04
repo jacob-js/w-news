@@ -15,7 +15,7 @@ function Home() {
     const filterKeyword = useSelector(state => state.articles.filterKeyword);
 
     useEffect(() =>{
-        dispatch(getArticles(12))
+        dispatch(getArticles({pageSize: 12}))
     }, []);
 
   return (

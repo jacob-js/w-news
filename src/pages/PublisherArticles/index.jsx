@@ -14,7 +14,7 @@ function PublisherArticles() {
     const {data, loading} = useSelector(state => state.articles.articlesByPublisher);
 
     useEffect(() =>{
-      dispatch(getArticlesByPublisher({source:params.id, pageSize: 12}))
+      dispatch(getArticlesByPublisher(params.id))
     }, [])
 
   return (
